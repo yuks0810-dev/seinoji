@@ -10,6 +10,8 @@ const prisma = new PrismaClient();
 
 const STROKE_COLORS = ['#FF0000', '#00FF00', '#0000FF', '#FFA500', '#800080']
 
+type StrokeType = number; // 追加: StrokeTypeを定義
+
 export function TallyApp() {
   const [tally, setTally] = useState(0)
   const [memo, setMemo] = useState('')
@@ -33,7 +35,7 @@ export function TallyApp() {
     fetchHistory();
   }, []);
 
-  const addStroke = async (newStroke, memo) => {
+  const addStroke = async (newStroke: StrokeType, memo: string) => {
     try {
       const response = await fetch('/api/tally', {
         method: 'POST',
