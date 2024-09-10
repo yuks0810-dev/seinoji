@@ -64,6 +64,12 @@ export function TallyApp() {
   }
 
   useEffect(() => {
+    if (tally % 5 === 0 && tally > 0) {
+      setShowCake(true);
+    }
+  }, [tally]);
+
+  useEffect(() => {
     if (showCake) {
       const timer = setTimeout(() => setShowCake(false), 3000)
       return () => clearTimeout(timer)
